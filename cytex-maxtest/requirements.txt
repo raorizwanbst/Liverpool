@@ -1,0 +1,39 @@
+flask==2.0.1
+jinja2==2.11.2
+pyyaml==5.3.1
+requests==2.19.1
+urllib3==1.24.1
+cryptography==2.3
+django==2.2.0
+numpy==1.16.0
+pillow==8.0.0
+
+# AI / ML dependencies (dependency + model detectors)
+openai==0.27.0
+anthropic==0.3.0
+langchain==0.0.100
+langchain-community==0.0.10
+langchain-openai==0.0.2
+tensorflow==2.5.0
+torch==1.10.0
+keras==2.4.0
+transformers==4.20.0
+sentence-transformers==2.2.0
+chromadb==0.3.21
+faiss-cpu==1.7.2
+redis==4.3.4
+
+# Cloud AI SDKs (cloud resource detector)
+boto3==1.26.0
+google-cloud-aiplatform==1.25.0
+azure-ai-ml==1.5.0
+
+# Agent-to-agent / MCP (remote agent + mcp detectors)
+a2a-sdk==0.2.0
+mcp==1.2.0
+langchain-mcp-adapters==0.0.3
+
+# ML lifecycle / experiment tracking (ml_lifecycle detector)
+mlflow==2.3.0
+wandb==0.15.0
+onnx==1.13.0
