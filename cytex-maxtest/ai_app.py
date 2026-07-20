@@ -23,8 +23,7 @@ import redis
 openai_client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 gpt4o = ChatOpenAI(model="gpt-4o")
 gpt4o_mini = ChatOpenAI(model="gpt-4o-mini")
-claude = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-CLAUDE_MODEL = "claude-sonnet-4-5"
+
 local_llm = ChatOllama(model="llama3.1")
 hf_generator = pipeline("text-generation", model="gpt2")
 
