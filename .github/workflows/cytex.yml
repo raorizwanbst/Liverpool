@@ -225,9 +225,9 @@ jobs:
           skills_doc = load("skills.json")
           skill_results = norm(skills_doc.get("results") or [])
           for result in skill_results:
-              name = str(result.get("skill_name", ""))
-              ref = "agent-skill-" + name.replace(" ", "-")
-              combined.setdefault("components", []).append({
+                name = str(result.get("skill_name") or "") or os.path.basename(str(result.get("skill_path", ""))) or os.environ.get("REPO", "").split("/")[-1]
+                ref = "agent-skill-" + name.replace(" ", "-") if name else "agent-skill-root"
+                combined.setdefault("components", []).append({
                   "type": "skill",
                   "bom-ref": ref,
                   "name": name,
