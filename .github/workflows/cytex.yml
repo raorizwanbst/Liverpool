@@ -239,24 +239,24 @@ jobs:
                       {"name": "skill:MaxSeverity", "value": str(result.get("max_severity", ""))},
                       {"name": "skill:FindingsCount", "value": str(result.get("findings_count", ""))},
                   ],
-              })
-              for finding in result.get("findings") or []:
-                  combined.setdefault("vulnerabilities", []).append({
-                      "bom-ref": str(finding.get("id") or finding.get("rule_id", "SKILL-FINDING")) + "-" + ref,
-                      "id": finding.get("rule_id", "SKILL-FINDING"),
-                      "source": {"name": "skill-scanner"},
-                      "ratings": [{"severity": str(finding.get("severity", "")).lower(), "method": "other"}],
-                      "description": "%s: %s Remediation: %s" % (
-                          finding.get("title", ""), finding.get("description", ""),
-                          finding.get("remediation", "")),
-                      "affects": [{"ref": ref}],
-                      "properties": [
-                          {"name": "skill:Category", "value": str(finding.get("category", ""))},
-                          {"name": "skill:Analyzer", "value": str(finding.get("analyzer", ""))},
-                          {"name": "skill:File", "value": str(finding.get("file_path", ""))},
-                      ],
-                      "_source": "skills",
-                  })
+                })
+                for finding in result.get("findings") or []:
+                    combined.setdefault("vulnerabilities", []).append({
+                        "bom-ref": str(finding.get("id") or finding.get("rule_id", "SKILL-FINDING")) + "-" + ref,
+                        "id": finding.get("rule_id", "SKILL-FINDING"),
+                        "source": {"name": "skill-scanner"},
+                        "ratings": [{"severity": str(finding.get("severity", "")).lower(), "method": "other"}],
+                        "description": "%s: %s Remediation: %s" % (
+                            finding.get("title", ""), finding.get("description", ""),
+                            finding.get("remediation", "")),
+                        "affects": [{"ref": ref}],
+                        "properties": [
+                            {"name": "skill:Category", "value": str(finding.get("category", ""))},
+                            {"name": "skill:Analyzer", "value": str(finding.get("analyzer", ""))},
+                            {"name": "skill:File", "value": str(finding.get("file_path", ""))},
+                        ],
+                        "_source": "skills",
+                    })
 
           # MCP findings -> vulnerabilities[] (_source "mcp"). mcp-scanner's raw shape isn't
           # fixed, so locate findings defensively and keep the whole finding in a property.
